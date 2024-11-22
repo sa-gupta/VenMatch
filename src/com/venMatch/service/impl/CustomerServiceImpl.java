@@ -14,7 +14,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void createCustomer(VenMatchUtility venMatchUtility, String path) {
-        customerDao.createCustomer(venMatchUtility, path);
+    public void createCustomer(VenMatchUtility venMatchUtility, String paths) {
+        customerDao.createCustomer(venMatchUtility, paths);
     }
 }
