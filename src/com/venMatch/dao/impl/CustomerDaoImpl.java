@@ -12,7 +12,7 @@ public class CustomerDaoImpl implements CustomerDao {
     private List<Customer> customers = new ArrayList<>();
 
     @Override
-    public void createCustomer(VenMatchUtility venMatchUtility, String path) {
+    public void createCustomer(VenMatchUtility venMatchUtility, String path) throws Exception {
         this.customers = venMatchUtility.readFromCSV(path, Customer.class);
     }
 }

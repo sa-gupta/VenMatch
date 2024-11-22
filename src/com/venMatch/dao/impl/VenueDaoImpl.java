@@ -12,7 +12,7 @@ public class VenueDaoImpl implements VenueDao {
     private List<Venue> venues = new ArrayList<>();
 
     @Override
-    public void createVenue(VenMatchUtility venMatchUtility, String path) {
+    public void createVenue(VenMatchUtility venMatchUtility, String path) throws Exception {
         this.venues = venMatchUtility.readFromCSV(path, Venue.class);
     }
 }

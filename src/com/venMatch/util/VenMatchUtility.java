@@ -8,7 +8,7 @@ import java.util.List;
 
 public class VenMatchUtility<T> {
 
-    public static <T> List<T> readFromCSV(String filePath, Class<T> clazz) {
+    public static <T> List<T> readFromCSV(String filePath, Class<T> clazz) throws Exception {
         List<T> result = new ArrayList<>();
         String line;
         String[] headers = null;
@@ -30,7 +30,7 @@ public class VenMatchUtility<T> {
                 result.add(item);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new Exception(e);
         }
         return result;
     }
