@@ -17,4 +17,9 @@ public class VenueServiceImpl implements VenueService {
     public void createVenue(VenMatchUtility venMatchUtility, String path) throws Exception {
         venueDao.createVenue(venMatchUtility, path);
     }
+
+    @Override
+    public void printVenue(int i) {
+        venueDao.print(i);
+    }
 }

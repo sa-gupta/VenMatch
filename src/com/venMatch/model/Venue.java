@@ -8,6 +8,8 @@ public class Venue {
     private Integer costPerRoom;
     private Integer noOfRooms;
 
+    public Venue() {}
+
     public Venue(String name, String city, Integer costPerRoom, Integer noOfRooms) {
         this.id = idCounter++;;
         this.name = name;
