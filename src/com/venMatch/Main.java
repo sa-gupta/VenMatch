@@ -10,31 +10,35 @@ import java.util.Scanner;
 
 public class Main {
 
-    private CustomerService customerService;
-    private VenueService venueService;
-    private Scanner scanner;
-    private VenMatchUtility venMatchUtility;
+    private final CustomerService customerService;
+    private final VenueService venueService;
+    private final Scanner inputScanner;
+    private final VenMatchUtility venMatchUtility;
 
     public Main() {
-        this.scanner = new Scanner(System.in);
+        this.inputScanner = new Scanner(System.in);
         this.customerService = new CustomerServiceImpl();
         this.venueService = new VenueServiceImpl();
         this.venMatchUtility = new VenMatchUtility();
     }
 
     void executeApp() {
-        customerService.createCustomer(venMatchUtility,
-                readFromConsole("Enter CSV path for customer creation"));
+        try {
+            customerService.createCustomer(venMatchUtility, readFromConsole("Enter CSV path for customer creation"));
 
-        venueService.createVenue(venMatchUtility,
-                readFromConsole("Enter CSV path for venue creation"));
+            venueService.createVenue(venMatchUtility, readFromConsole("Enter CSV path for venue creation"));
 
+        } catch (Exception e) {
+            System.err.println("An error occurred: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            inputScanner.close();
+        }
     }
 
-    private String readFromConsole(String textToPresent) {
-        System.out.println(textToPresent);
-        String input = scanner.next();
-        return input;
+    private String readFromConsole(String prompt) {
+        System.out.println(prompt);
+        return inputScanner.nextLine();
     }
 
     public static void main(String[] args) {
