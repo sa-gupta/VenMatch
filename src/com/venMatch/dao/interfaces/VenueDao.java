@@ -11,4 +11,6 @@ public interface VenueDao {
     void print(int i);
 
     List<Venue> getAllVenues();
+
+    Venue getVenueById(Integer id);
 }

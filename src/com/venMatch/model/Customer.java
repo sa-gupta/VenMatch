@@ -12,10 +12,11 @@ public class Customer {
     private Integer minNoOfGuests;
     private Integer maxNoOfGuests;
 
-    public Customer() {}
+    public Customer() {
+        this.id = idCounter++;
+    }
 
     public Customer(String name, String expextedDateOfPurchase, Integer forNoOfDays, Integer minNoOfGuests, Integer maxNoOfGuests) {
-        this.id = idCounter++;
         this.name = name;
         this.expextedDateOfPurchase = expextedDateOfPurchase;
         this.forNoOfDays = forNoOfDays;
@@ -45,6 +46,18 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", expextedDateOfPurchase='" + expextedDateOfPurchase + '\'' +
+                ", forNoOfDays=" + forNoOfDays +
+                ", minNoOfGuests=" + minNoOfGuests +
+                ", maxNoOfGuests=" + maxNoOfGuests +
+                '}';
     }
 
     public String getExpextedDateOfPurchase() {
@@ -79,14 +92,4 @@ public class Customer {
         this.maxNoOfGuests = maxNoOfGuests;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "name='" + name + '\'' +
-                ", expextedDateOfPurchase=" + expextedDateOfPurchase +
-                ", forNoOfDays=" + forNoOfDays +
-                ", minNoOfGuests=" + minNoOfGuests +
-                ", maxNoOfGuests=" + maxNoOfGuests +
-                '}';
-    }
 }

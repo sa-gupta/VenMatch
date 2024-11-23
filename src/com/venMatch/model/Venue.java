@@ -8,10 +8,11 @@ public class Venue {
     private Integer costPerRoom;
     private Integer noOfRooms;
 
-    public Venue() {}
+    public Venue() {
+        this.id = idCounter++;
+    }
 
     public Venue(String name, String city, Integer costPerRoom, Integer noOfRooms) {
-        this.id = idCounter++;;
         this.name = name;
         this.city = city;
         this.costPerRoom = costPerRoom;

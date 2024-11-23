@@ -28,8 +28,8 @@ public class Main {
 
             venueService.createVenue(venMatchUtility, readFromConsole("Enter CSV path for venue creation"));
 
-            customerService.printCustomer(10);
-            venueService.printVenue(10);
+            customerService.matchCustomerWithVenue();
+
 
         } catch (Exception e) {
             System.err.println("An error occurred: " + e.getMessage());

@@ -7,10 +7,11 @@ import com.venMatch.util.VenMatchUtility;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class VenueDaoImpl implements VenueDao {
 
-    private List<Venue> venues = new ArrayList<>();
+    private static List<Venue> venues = new ArrayList<>();
 
     @Override
     public void createVenue(VenMatchUtility venMatchUtility, String path) throws Exception {
@@ -29,5 +30,13 @@ public class VenueDaoImpl implements VenueDao {
     @Override
     public List<Venue> getAllVenues() {
         return venues;
+    }
+
+    @Override
+    public Venue getVenueById(Integer id) {
+        Optional<Venue> venue = venues.stream()
+                .filter(v -> v.getId().equals(id))
+                .findFirst();
+        return venue.orElse(null);
     }
 }
