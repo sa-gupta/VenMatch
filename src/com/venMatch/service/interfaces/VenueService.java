@@ -4,4 +4,6 @@ import com.venMatch.util.VenMatchUtility;
 
 public interface VenueService {
     void createVenue(VenMatchUtility venMatchUtility, String path) throws Exception;
+
+    void printVenue(int i);
 }

@@ -28,6 +28,9 @@ public class Main {
 
             venueService.createVenue(venMatchUtility, readFromConsole("Enter CSV path for venue creation"));
 
+            customerService.matchCustomerWithVenue();
+
+
         } catch (Exception e) {
             System.err.println("An error occurred: " + e.getMessage());
             e.printStackTrace();
@@ -38,7 +41,7 @@ public class Main {
 
     private String readFromConsole(String prompt) {
         System.out.println(prompt);
-        return inputScanner.nextLine();
+        return "";
     }
 
     public static void main(String[] args) {
