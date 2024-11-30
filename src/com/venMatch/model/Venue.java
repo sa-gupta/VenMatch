@@ -1,7 +1,7 @@
 package com.venMatch.model;
 
 public class Venue {
-    private static int idCounter = 1; // Static counter for id auto-increment
+    private static int idCounter = 1;
     private Integer id;
     private String name;
     private String city;

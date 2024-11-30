@@ -9,6 +9,7 @@ import com.venMatch.dto.VenueDto;
 import com.venMatch.model.Customer;
 import com.venMatch.model.Venue;
 import com.venMatch.service.interfaces.CustomerService;
+import com.venMatch.util.Constants;
 import com.venMatch.util.VenMatchUtility;
 
 import java.io.IOException;
@@ -46,15 +47,17 @@ public class CustomerServiceImpl implements CustomerService {
             List<VenueDto> suitableVenueForThreeOccupancy = new ArrayList<>();
             List<VenueDto> suitableVenueForFourOccupancy = new ArrayList<>();
             Integer approxGuest = customer.getMinNoOfGuests() == 0 ? customer.getMaxNoOfGuests() : ((customer.getMaxNoOfGuests() + customer.getMinNoOfGuests())/2);
+            Integer roomReqFor3Occupancy = approxGuest/3;
+            Integer roomReqFor4Occupancy = approxGuest/4;
             OutputDto o = new OutputDto();
             o.setCustName(customer.getName());
             for (Venue venue : venues) {
-                if((venue.getNoOfRooms()*3) > approxGuest){
-                    suitableVenueForThreeOccupancy.add(new VenueDto(venue.getName(), (approxGuest/3)*venue.getCostPerRoom(),approxGuest/3));
+                if((venue.getNoOfRooms() > (roomReqFor3Occupancy - Constants.VARIANCE)) && (venue.getNoOfRooms() < (roomReqFor3Occupancy + Constants.VARIANCE))){
+                    suitableVenueForThreeOccupancy.add(new VenueDto(venue.getName(), roomReqFor3Occupancy*venue.getCostPerRoom(),roomReqFor3Occupancy));
                 }
 
-                if((venue.getNoOfRooms()*4) > approxGuest){
-                    suitableVenueForFourOccupancy.add(new VenueDto(venue.getName(), (approxGuest/4)*venue.getCostPerRoom(),approxGuest/4));
+                if((venue.getNoOfRooms() > (roomReqFor4Occupancy - Constants.VARIANCE)) && (venue.getNoOfRooms() < (roomReqFor4Occupancy + Constants.VARIANCE))){
+                    suitableVenueForFourOccupancy.add(new VenueDto(venue.getName(), roomReqFor4Occupancy*venue.getCostPerRoom(),roomReqFor4Occupancy));
                 }
             }
 
