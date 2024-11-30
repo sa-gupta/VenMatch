@@ -2,8 +2,6 @@ package com.venMatch.util;
 
 import com.venMatch.dto.OutputDto;
 import com.venMatch.dto.VenueDto;
-import com.venMatch.model.Customer;
-import com.venMatch.model.Venue;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,8 +10,6 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class VenMatchUtility<T> {
 
@@ -33,8 +29,8 @@ public class VenMatchUtility<T> {
 
                 for (int i = 0; i < headers.length && i < values.length; i++) {
                     Field field = clazz.getDeclaredField(headers[i].trim());
-                    field.setAccessible(true); // Allow private fields to be set
-                    field.set(item, convertValue(values[i], field.getType())); // Set the field value
+                    field.setAccessible(true);
+                    field.set(item, convertValue(values[i], field.getType()));
                 }
                 result.add(item);
             }

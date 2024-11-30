@@ -5,7 +5,6 @@ import com.venMatch.model.Venue;
 import com.venMatch.util.VenMatchUtility;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 

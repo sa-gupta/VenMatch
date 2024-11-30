@@ -1,10 +1,7 @@
 package com.venMatch.model;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public class Customer {
-    private static int idCounter = 1; // Static counter for id auto-increment
+    private static int idCounter = 1;
     private Integer id;
     private String name;
     private String expextedDateOfPurchase;
