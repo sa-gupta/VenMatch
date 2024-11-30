@@ -14,6 +14,7 @@ import com.venMatch.util.VenMatchUtility;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,6 +61,9 @@ public class CustomerServiceImpl implements CustomerService {
                     suitableVenueForFourOccupancy.add(new VenueDto(venue.getName(), roomReqFor4Occupancy*venue.getCostPerRoom(),roomReqFor4Occupancy));
                 }
             }
+
+            Collections.shuffle(suitableVenueForThreeOccupancy);
+            Collections.shuffle(suitableVenueForFourOccupancy);
 
             o.setVenueForThreeOccupancy(suitableVenueForThreeOccupancy);
             o.setVenueForFourOccupancy(suitableVenueForFourOccupancy);
